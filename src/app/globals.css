@@ -1,26 +1,102 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #FAFAFA;
+  --bg-card: #FFFFFF;
+  --text-primary: #18181B;
+  --text-secondary: #3F3F46;
+  --text-tertiary: #52525B;
+  --text-muted: #71717A;
+  --text-faint: #A1A1AA;
+  --border-color: #EBEBEB;
+  --border-strong: #D4D4D8;
+  --surface-subtle: #F4F4F5;
+}
+
+.dark {
+  --bg: #09090B;
+  --bg-card: #18181B;
+  --text-primary: #FAFAFA;
+  --text-secondary: #A1A1AA;
+  --text-tertiary: #A1A1AA;
+  --text-muted: #71717A;
+  --text-faint: #52525B;
+  --border-color: #27272A;
+  --border-strong: #3F3F46;
+  --surface-subtle: #27272A;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-bg-card: var(--bg-card);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-border: var(--border-color);
+  --color-border-strong: var(--border-strong);
+  --color-surface-subtle: var(--surface-subtle);
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.cmdk-item {
+  @apply flex items-center px-4 py-2.5 text-[14px] text-[var(--color-text-secondary)] rounded-md cursor-pointer transition-colors;
+}
+.cmdk-item[data-selected="true"], .cmdk-item:hover {
+  @apply bg-[var(--color-surface-subtle)] text-[var(--color-text-primary)];
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .dark {
+    --bg: #ffffff;
+    --bg-card: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --text-tertiary: #555555;
+    --text-muted: #666666;
+    --text-faint: #999999;
+    --border-color: #dddddd;
+    --border-strong: #cccccc;
+    --surface-subtle: #f9f9f9;
+  }
+  nav, .theme-toggle, button, #contact a {
+    display: none !important;
+  }
+  section {
+    page-break-inside: avoid;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+  }
+  .bg-\[var\(--color-bg-card\)\] {
+    break-inside: avoid;
+    border: 1px solid #e5e5e5 !important;
+  }
+  @page {
+    margin: 1.5cm;
+  }
+}
+
