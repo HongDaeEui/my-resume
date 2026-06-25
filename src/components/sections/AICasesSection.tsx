@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function AICasesSection() {
   return (
-    <Section id="ai" label="⭐ AI in Practice" title="AI 활용 실업무 사례">
+    <Section id="ai" label="AI-Driven Workflow" title="AI 기반 개발 워크플로우">
       <div className="flex flex-col gap-4">
         {aiCases.map((caseItem, i) => (
           <SpotlightCard key={i}>
