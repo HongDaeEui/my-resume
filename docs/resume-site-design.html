@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김민재 — Frontend Engineer</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #FAFAFA;
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    color: #18181B;
+    line-height: 1.7;
+    letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .site {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Navigation */
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(250, 250, 250, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid #EBEBEB;
+  }
+  .nav-inner {
+    max-width: 720px; margin: 0 auto;
+    padding: 16px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px;
+  }
+  .nav-name { font-weight: 600; color: #18181B; }
+  .nav-links { display: flex; gap: 24px; color: #71717A; }
+  .nav-links a { transition: color 0.15s; }
+  .nav-links a:hover { color: #18181B; }
+
+  .section { padding: 64px 0; }
+  .section-label {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: #A1A1AA; margin-bottom: 16px;
+  }
+  h2.section-title {
+    font-size: 22px; font-weight: 600; margin-bottom: 28px;
+    letter-spacing: -0.015em;
+  }
+
+  /* Hero */
+  .hero { padding-top: 96px; }
+  .hero h1 {
+    font-size: 44px; font-weight: 700; line-height: 1.25;
+    margin-bottom: 16px; letter-spacing: -0.025em;
+  }
+  .hero .headline {
+    font-size: 19px; color: #3F3F46; font-weight: 500;
+    margin-bottom: 28px; line-height: 1.55;
+  }
+  .hero .bio {
+    font-size: 16px; color: #52525B; margin-bottom: 36px;
+  }
+  .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 18px; background: #18181B; color: #FAFAFA;
+    border-radius: 8px; font-size: 14px; font-weight: 500;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: #27272A; }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 18px; background: transparent; color: #18181B;
+    border: 1px solid #D4D4D8; border-radius: 8px;
+    font-size: 14px; font-weight: 500;
+    transition: border-color 0.15s;
+  }
+  .btn-secondary:hover { border-color: #18181B; }
+  .socials { margin-top: 28px; display: flex; gap: 20px; font-size: 14px; color: #71717A; }
+  .socials a {
+    border-bottom: 1px solid #E4E4E7;
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .socials a:hover { color: #18181B; border-color: #18181B; }
+
+  /* Tech Stack */
+  .stack-row {
+    display: grid; grid-template-columns: 180px 1fr; gap: 24px;
+    padding: 16px 0; border-top: 1px solid #EBEBEB;
+  }
+  .stack-row:last-child { border-bottom: 1px solid #EBEBEB; }
+  .stack-category { font-size: 14px; color: #71717A; font-weight: 500; padding-top: 2px; }
+  .stack-category.highlight { color: #18181B; font-weight: 600; }
+  .stack-items { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stack-tag {
+    font-size: 13px; padding: 3px 10px;
+    background: #F4F4F5; color: #3F3F46;
+    border-radius: 6px;
+  }
+  .stack-tag.accent { background: #18181B; color: #FAFAFA; }
+
+  /* Experience */
+  .exp-item { padding: 28px 0; border-top: 1px solid #EBEBEB; }
+  .exp-item:last-child { border-bottom: 1px solid #EBEBEB; }
+  .exp-head {
+    display: flex; justify-content: space-between;
+    align-items: baseline; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 4px;
+  }
+  .exp-company { font-size: 18px; font-weight: 600; }
+  .exp-period { font-size: 13px; color: #71717A; font-variant-numeric: tabular-nums; }
+  .exp-role { font-size: 14px; color: #52525B; margin-bottom: 18px; }
+  .exp-achievements { list-style: none; }
+  .exp-achievements li {
+    font-size: 15px; color: #3F3F46;
+    padding: 6px 0 6px 18px;
+    position: relative; line-height: 1.7;
+  }
+  .exp-achievements li::before {
+    content: ""; position: absolute; left: 0; top: 14px;
+    width: 6px; height: 1px; background: #A1A1AA;
+  }
+  .metric { color: #18181B; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  /* Projects */
+  .project {
+    padding: 24px; border: 1px solid #EBEBEB;
+    border-radius: 12px; margin-bottom: 16px; background: #FFFFFF;
+    transition: border-color 0.15s;
+  }
+  .project:hover { border-color: #D4D4D8; }
+  .project-head {
+    display: flex; justify-content: space-between;
+    align-items: baseline; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 6px;
+  }
+  .project-name { font-size: 17px; font-weight: 600; }
+  .project-link {
+    font-size: 13px; color: #71717A;
+    border-bottom: 1px solid currentColor;
+  }
+  .project-oneliner { font-size: 14px; color: #52525B; margin-bottom: 16px; }
+  .project-meta { font-size: 13px; color: #71717A; margin-bottom: 14px; }
+  .project-contrib { list-style: none; margin-bottom: 16px; }
+  .project-contrib li {
+    font-size: 14px; color: #3F3F46;
+    padding: 4px 0 4px 16px; position: relative;
+  }
+  .project-contrib li::before {
+    content: "·"; position: absolute; left: 4px; color: #A1A1AA;
+  }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+  .project-stack .stack-tag { font-size: 12px; padding: 2px 8px; }
+
+  /* AI Cases */
+  .ai-case {
+    padding: 28px; background: #FFFFFF;
+    border: 1px solid #EBEBEB; border-radius: 12px;
+    margin-bottom: 16px;
+    position: relative; overflow: hidden;
+  }
+  .ai-case::before {
+    content: ""; position: absolute;
+    left: 0; top: 0; bottom: 0; width: 3px;
+    background: #18181B;
+  }
+  .ai-case-title { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+  .ai-case-summary { font-size: 14px; color: #52525B; margin-bottom: 20px; }
+  .ai-block { margin-bottom: 14px; }
+  .ai-block-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #A1A1AA; margin-bottom: 4px;
+  }
+  .ai-block-label.after { color: #18181B; }
+  .ai-block-text { font-size: 14px; color: #3F3F46; line-height: 1.7; }
+  .ai-tools {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px dashed #E4E4E7;
+  }
+  .ai-tools .stack-tag { font-size: 11px; }
+
+  /* Contact */
+  .contact { text-align: center; padding: 96px 0; border-top: 1px solid #EBEBEB; }
+  .contact-msg { font-size: 18px; color: #3F3F46; margin-bottom: 24px; line-height: 1.6; }
+  .contact-email {
+    display: inline-block; font-size: 22px; font-weight: 600;
+    color: #18181B; border-bottom: 2px solid #18181B;
+    padding-bottom: 2px; margin-bottom: 28px;
+  }
+  .footer-socials {
+    display: flex; justify-content: center; gap: 24px;
+    font-size: 14px; color: #71717A;
+  }
+  .footer-socials a { transition: color 0.15s; }
+  .footer-socials a:hover { color: #18181B; }
+
+  @media (max-width: 640px) {
+    .site, .nav-inner { padding-left: 20px; padding-right: 20px; }
+    .hero { padding-top: 64px; }
+    .hero h1 { font-size: 34px; }
+    .hero .headline { font-size: 17px; }
+    .stack-row { grid-template-columns: 1fr; gap: 8px; }
+    .section { padding: 48px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-name">김민재</span>
+    <div class="nav-links">
+      <a href="#experience">경력</a>
+      <a href="#projects">프로젝트</a>
+      <a href="#ai">AI 사례</a>
+      <a href="#contact">연락하기</a>
+    </div>
+  </div>
+</nav>
+
+<div class="site">
+
+  <!-- Hero -->
+  <section class="section hero">
+    <h1>김민재</h1>
+    <p class="headline">AI 도구로 더 빠르게 만드는 React/Next.js 프론트엔드 엔지니어 · 5년차</p>
+    <p class="bio">
+      B2B SaaS와 커머스 서비스를 만들어왔습니다. 디자인 시스템과 성능 최적화에 강하고,
+      AI 도구를 일상 워크플로우에 녹여 팀 생산성을 높이는 일에 관심이 많습니다.
+    </p>
+    <div class="ctas">
+      <a href="/resume.pdf" class="btn-primary">
+        이력서 PDF 다운로드 <span style="font-size: 11px;">↓</span>
+      </a>
+      <a href="mailto:hello@example.com" class="btn-secondary">이메일 보내기</a>
+    </div>
+    <div class="socials">
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Blog</a>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="section">
+    <div class="section-label">Tech Stack</div>
+    <h2 class="section-title">기술 스택</h2>
+    <div>
+      <div class="stack-row">
+        <div class="stack-category">Core</div>
+        <div class="stack-items">
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">Next.js (App Router)</span>
+          <span class="stack-tag">TypeScript</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-category">Styling</div>
+        <div class="stack-items">
+          <span class="stack-tag">Tailwind CSS</span>
+          <span class="stack-tag">CSS Modules</span>
+          <span class="stack-tag">Framer Motion</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-category">State / Data</div>
+        <div class="stack-items">
+          <span class="stack-tag">TanStack Query</span>
+          <span class="stack-tag">Zustand</span>
+          <span class="stack-tag">Zod</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-category highlight">AI-Augmented Workflow</div>
+        <div class="stack-items">
+          <span class="stack-tag accent">Claude Code</span>
+          <span class="stack-tag accent">Cursor</span>
+          <span class="stack-tag accent">GitHub Copilot</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-category">Testing & Tooling</div>
+        <div class="stack-items">
+          <span class="stack-tag">Vitest</span>
+          <span class="stack-tag">Playwright</span>
+          <span class="stack-tag">Storybook</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section" id="experience">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">경력</h2>
+
+    <div class="exp-item">
+      <div class="exp-head">
+        <span class="exp-company">A사 · B2B SaaS, 시리즈 B</span>
+        <span class="exp-period">2023.03 — Present</span>
+      </div>
+      <div class="exp-role">Frontend Engineer · 디자인 시스템팀</div>
+      <ul class="exp-achievements">
+        <li>디자인 시스템 v2 마이그레이션 주도, 신규 페이지 개발 속도 <span class="metric">40% 단축</span></li>
+        <li>대시보드 Lighthouse 성능 <span class="metric">62 → 91</span>, LCP <span class="metric">2.1초 단축</span></li>
+        <li>팀 내 Cursor·CLAUDE.md 워크플로우 정착, 스프린트당 평균 <span class="metric">2일 절감</span></li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-head">
+        <span class="exp-company">B사 · 커머스 플랫폼</span>
+        <span class="exp-period">2021.01 — 2023.02</span>
+      </div>
+      <div class="exp-role">Frontend Developer · 주문/결제 도메인</div>
+      <ul class="exp-achievements">
+        <li>주문서 페이지 리뉴얼 리드, 전환율 <span class="metric">8.4% 개선</span></li>
+        <li>레거시 JS 코드 TypeScript로 점진 마이그레이션 (<span class="metric">~12만 줄</span>)</li>
+        <li>Class → Function 컴포넌트 전환 자동화 스크립트 작성, 작업 시간 <span class="metric">3주 → 4일</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Work Projects -->
+  <section class="section" id="projects">
+    <div class="section-label">Work Projects</div>
+    <h2 class="section-title">회사 프로젝트</h2>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="project-name">디자인 시스템 v2</span>
+        <a href="#" class="project-link">스토리북 보기 →</a>
+      </div>
+      <div class="project-oneliner">전사 디자인 시스템 마이그레이션 및 컴포넌트 라이브러리 구축</div>
+      <div class="project-meta">2024.01 — 2024.08 · 4명 (FE 3, 디자이너 1) · 테크리드</div>
+      <ul class="project-contrib">
+        <li>120여 개 컴포넌트 마이그레이션, 토큰 기반 테마 시스템 설계</li>
+        <li>Storybook 자동 문서화 워크플로우 구축 (AI 기반)</li>
+        <li>전사 11개 프로덕트팀 점진 도입, 6개월 내 80% 채택</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-tag">React</span>
+        <span class="stack-tag">TypeScript</span>
+        <span class="stack-tag">Vanilla Extract</span>
+        <span class="stack-tag">Storybook</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="project-name">주문서 페이지 리뉴얼</span>
+        <span class="project-link" style="border: none;">NDA</span>
+      </div>
+      <div class="project-oneliner">결제 전환율 개선을 위한 주문서 페이지 전면 개편</div>
+      <div class="project-meta">2022.06 — 2022.11 · 6명 · FE 메인</div>
+      <ul class="project-contrib">
+        <li>3단계 결제 흐름을 단일 페이지로 통합, 이탈률 22% 감소</li>
+        <li>이미지 최적화 + 코드 스플리팅으로 LCP 4.2초 → 1.6초</li>
+        <li>A/B 테스트 4회 운영, 최종 전환율 8.4% 개선</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-tag">Next.js</span>
+        <span class="stack-tag">TypeScript</span>
+        <span class="stack-tag">React Hook Form</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Projects -->
+  <section class="section">
+    <div class="section-label">Personal</div>
+    <h2 class="section-title">개인 프로젝트</h2>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="project-name">prompt-stash</span>
+        <a href="#" class="project-link">GitHub →</a>
+      </div>
+      <div class="project-oneliner">개인 프롬프트 라이브러리 관리 도구 (오픈소스)</div>
+      <div class="project-meta">2025.04 — 진행 중 · 솔로 · Next.js 15 / Server Actions</div>
+      <ul class="project-contrib">
+        <li>Claude Code와 페어 코딩으로 4일 만에 MVP 완성</li>
+        <li>GitHub Star 240+, 주간 활성 사용자 80여 명</li>
+        <li>로컬 우선 데이터 모델 + 옵셔널 동기화 구조</li>
+      </ul>
+      <div class="project-stack">
+        <span class="stack-tag">Next.js 15</span>
+        <span class="stack-tag">TypeScript</span>
+        <span class="stack-tag">SQLite</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Cases -->
+  <section class="section" id="ai">
+    <div class="section-label">⭐ AI in Practice</div>
+    <h2 class="section-title">AI 활용 실업무 사례</h2>
+
+    <div class="ai-case">
+      <div class="ai-case-title">디자인 시스템 문서화 자동화</div>
+      <div class="ai-case-summary">Storybook MDX 작성을 AI 워크플로우로 전환해 문서화 시간을 80% 단축</div>
+
+      <div class="ai-block">
+        <div class="ai-block-label">Before</div>
+        <div class="ai-block-text">120개 컴포넌트의 사용 예시와 props 문서를 수작업으로 작성 중. 컴포넌트당 평균 1.5시간 소요되어 전체 진도가 매우 더딘 상황.</div>
+      </div>
+      <div class="ai-block">
+        <div class="ai-block-label">Approach</div>
+        <div class="ai-block-text">컴포넌트 소스 코드와 디자인 토큰을 컨텍스트로 넣고, Claude Code로 MDX 초안을 생성 → 디자이너 리뷰 → 코드 예시 검증의 3단계 파이프라인 구축.</div>
+      </div>
+      <div class="ai-block">
+        <div class="ai-block-label after">After</div>
+        <div class="ai-block-text">컴포넌트당 평균 <span class="metric">1.5시간 → 18분</span>. 전체 문서화 기간을 <span class="metric">8주 → 2주</span>로 단축. 일관된 톤과 구조 확보.</div>
+      </div>
+      <div class="ai-block">
+        <div class="ai-block-label">Spread</div>
+        <div class="ai-block-text">팀 내 가이드 문서로 정리, 다른 프로덕트팀 2곳에 워크플로우 전파.</div>
+      </div>
+
+      <div class="ai-tools">
+        <span class="stack-tag">Claude Code</span>
+        <span class="stack-tag">Cursor</span>
+        <span class="stack-tag">Storybook MDX</span>
+      </div>
+    </div>
+
+    <div class="ai-case">
+      <div class="ai-case-title">레거시 클래스 컴포넌트 마이그레이션</div>
+      <div class="ai-case-summary">12만 줄 규모의 Class Component를 Function + Hooks로 점진 전환</div>
+
+      <div class="ai-block">
+        <div class="ai-block-label">Before</div>
+        <div class="ai-block-text">5년 묵은 코드베이스, Class 기반 컴포넌트 약 400개. 수작업 마이그레이션 예상 기간 3개월.</div>
+      </div>
+      <div class="ai-block">
+        <div class="ai-block-label">Approach</div>
+        <div class="ai-block-text">반복 패턴을 식별해 변환 규칙을 프롬프트로 정형화 → AST 분석 + AI 변환 스크립트 작성 → 변환 후 자동 테스트로 회귀 검증.</div>
+      </div>
+      <div class="ai-block">
+        <div class="ai-block-label after">After</div>
+        <div class="ai-block-text">총 작업 기간 <span class="metric">3개월 → 4일</span>. 변환 후 회귀 버그 <span class="metric">0건</span>. 사내 기술 발표 1회.</div>
+      </div>
+
+      <div class="ai-tools">
+        <span class="stack-tag">Claude Code</span>
+        <span class="stack-tag">jscodeshift</span>
+        <span class="stack-tag">Vitest</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <p class="contact-msg">함께 이야기 나누고 싶은 일이 있다면<br/>편하게 연락 주세요.</p>
+    <a href="mailto:hello@example.com" class="contact-email">hello@example.com</a>
+    <div class="footer-socials">
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Resume (PDF)</a>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
