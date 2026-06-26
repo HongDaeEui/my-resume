@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { profile } from "@/data/profile";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 
 export function Nav() {
@@ -22,9 +21,6 @@ export function Nav() {
           </a>
           <div className="hidden sm:flex items-center gap-1.5 ml-2 text-[12px] text-[var(--color-text-faint)] font-medium px-2 py-1 bg-[var(--color-surface-subtle)] rounded-md border border-[var(--color-border)] select-none">
             <span className="text-[10px]">⌘</span>K
-          </div>
-          <div className="border-l border-[var(--color-border)] pl-4 sm:pl-6 ml-2 sm:ml-4 flex items-center">
-            <ThemeToggle />
           </div>
         </div>
       </div>

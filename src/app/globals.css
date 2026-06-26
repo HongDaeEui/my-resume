@@ -14,18 +14,6 @@
   --surface-subtle: #F4F4F5;
 }
 
-.dark {
-  --bg: #09090B;
-  --bg-card: #18181B;
-  --text-primary: #FAFAFA;
-  --text-secondary: #A1A1AA;
-  --text-tertiary: #A1A1AA;
-  --text-muted: #71717A;
-  --text-faint: #52525B;
-  --border-color: #27272A;
-  --border-strong: #3F3F46;
-  --surface-subtle: #27272A;
-}
 
 @theme inline {
   --color-bg: var(--bg);
@@ -71,19 +59,7 @@ body {
     background: #ffffff !important;
     color: #000000 !important;
   }
-  .dark {
-    --bg: #ffffff;
-    --bg-card: #ffffff;
-    --text-primary: #000000;
-    --text-secondary: #333333;
-    --text-tertiary: #555555;
-    --text-muted: #666666;
-    --text-faint: #999999;
-    --border-color: #dddddd;
-    --border-strong: #cccccc;
-    --surface-subtle: #f9f9f9;
-  }
-  nav, .theme-toggle, button, #contact a {
+nav, .theme-toggle, button, #contact a {
     display: none !important;
   }
   section {

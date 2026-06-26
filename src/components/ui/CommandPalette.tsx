@@ -3,14 +3,12 @@
 import { useEffect, useState } from "react";
 import { Command } from "cmdk";
 import { useRouter } from "next/navigation";
-import { useTheme } from "next-themes";
-import { FileText, Mail, Moon, Sun, Monitor, Briefcase, Code, User, Copy, Download } from "lucide-react";
+import { Mail, Briefcase, Code, User, Copy, Download } from "lucide-react";
 import { profile } from "@/data/profile";
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  const { setTheme } = useTheme();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -59,19 +57,7 @@ export function CommandPalette() {
             </Command.Item>
           </Command.Group>
 
-          <Command.Group heading="테마 변경" className="text-[11px] font-semibold text-[var(--color-text-faint)] px-2 py-1.5 uppercase tracking-wider [&>[cmdk-group-heading]]:mb-1.5 [&>[cmdk-group-heading]]:px-2 mt-2">
-            <Command.Item className="cmdk-item" onSelect={() => runCommand(() => setTheme("light"))}>
-              <Sun size={16} className="mr-2" /> 라이트 모드
-            </Command.Item>
-            <Command.Item className="cmdk-item" onSelect={() => runCommand(() => setTheme("dark"))}>
-              <Moon size={16} className="mr-2" /> 다크 모드
-            </Command.Item>
-            <Command.Item className="cmdk-item" onSelect={() => runCommand(() => setTheme("system"))}>
-              <Monitor size={16} className="mr-2" /> 시스템 설정
-            </Command.Item>
-          </Command.Group>
-
-          <Command.Group heading="액션" className="text-[11px] font-semibold text-[var(--color-text-faint)] px-2 py-1.5 uppercase tracking-wider [&>[cmdk-group-heading]]:mb-1.5 [&>[cmdk-group-heading]]:px-2 mt-2">
+<Command.Group heading="액션" className="text-[11px] font-semibold text-[var(--color-text-faint)] px-2 py-1.5 uppercase tracking-wider [&>[cmdk-group-heading]]:mb-1.5 [&>[cmdk-group-heading]]:px-2 mt-2">
             <Command.Item className="cmdk-item" onSelect={() => runCommand(() => window.open(profile.resumeUrl, "_blank"))}>
               <Download size={16} className="mr-2" /> PDF 이력서 다운로드
             </Command.Item>

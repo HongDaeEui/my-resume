@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import { CommandPalette } from "@/components/ui/CommandPalette";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
@@ -30,15 +29,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" suppressHydrationWarning>
+    <html lang="ko">
       <body className="antialiased">
-        <ThemeProvider>
-          <NoiseOverlay />
-          <SmoothScroll>
-            {children}
-            <CommandPalette />
-          </SmoothScroll>
-        </ThemeProvider>
+        <NoiseOverlay />
+        <SmoothScroll>
+          {children}
+          <CommandPalette />
+        </SmoothScroll>
       </body>
     </html>
   );
