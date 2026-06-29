@@ -2,6 +2,16 @@ import { AICase } from "@/lib/types";
 
 export const aiCases: AICase[] = [
   {
+    slug: "full-cycle-ai-workflow",
+    title: "SDLC 전 과정 AI 파이프라인 통합 (Full-Cycle AI Workflow)",
+    summary: "기획부터 배포까지 이어지는 전체 소프트웨어 생명주기(SDLC)에 AI를 결합해 개발 효율성을 극대화",
+    before: "단순히 개별 도구(Copilot 등)에 의존하는 수준으로, 전체 프로세스의 병목(기획 분석, 리뷰, 테스트 작성 등)을 체계적으로 해결하지 못함.",
+    approach: "요구사항(PRD) 형태 정리 → AI 누락 요구사항 및 리스크 점검 → 테스트 케이스 선 생성(TDD) → 초안 생성 및 구조화 → 리뷰 포인트 점검 → 배포 문서 자동 생성으로 이어지는 파이프라인 구축.",
+    after: "UI 컴포넌트 생성, API 연결, 폼 검증 등의 반복 작업 생산성을 획기적으로 개선하며, 철저한 피드백 루프로 코드 품질 보장.",
+    spread: "작은 단위로 쪼개어 접근하는 명확한 워크플로우 템플릿화.",
+    tools: ["Cursor", "Claude", "TDD"],
+  },
+  {
     slug: "design-system-mdx",
     title: "디자인 시스템 문서화 자동화",
     summary: "Storybook MDX 작성을 AI 워크플로우로 전환해 문서화 시간을 80% 단축",

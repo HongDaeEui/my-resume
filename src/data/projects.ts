@@ -1063,5 +1063,205 @@ export const projects: Project[] = [
       },
       "reflection": "기술적 한계를 극복하고 성공적으로 비즈니스 요구사항을 완수하였습니다."
     }
+  },
+  {
+    "slug": "personal-web-performance-audit-skill",
+    "name": "web-performance-audit-skill",
+    "oneLiner": "개인 저장소입니다.",
+    "period": {
+      "start": "2026.06",
+      "end": "2026.06"
+    },
+    "team": "개인 프로젝트",
+    "role": "Fullstack",
+    "contributions": [
+      "GitHub Repository: https://github.com/dayainow/web-performance-audit-skill",
+      "Language: JavaScript"
+    ],
+    "stack": [
+      "JavaScript"
+    ],
+    "type": "personal",
+    "links": {
+      "github": "https://github.com/dayainow/web-performance-audit-skill"
+    },
+    "detail": {
+      "background": "개인 저장소입니다.",
+      "approach": [
+        "저장소의 README를 확인해주세요."
+      ],
+      "results": {
+        "metrics": [
+          {
+            "value": "0",
+            "label": "Stars"
+          }
+        ],
+        "details": [
+          "최종 업데이트: 2026-06-29"
+        ]
+      },
+      "reflection": "진행 중인 개인 저장소입니다."
+    }
+  },
+  {
+    "slug": "personal-today-library",
+    "name": "today-library",
+    "oneLiner": "Find nearby libraries open today using Korean public library open data.",
+    "period": {
+      "start": "2026.04",
+      "end": "2026.06"
+    },
+    "team": "개인 프로젝트",
+    "role": "Fullstack",
+    "contributions": [
+      "GitHub Repository: https://github.com/dayainow/today-library",
+      "Language: TypeScript"
+    ],
+    "stack": [
+      "TypeScript"
+    ],
+    "type": "personal",
+    "links": {
+      "github": "https://github.com/dayainow/today-library"
+    },
+    "detail": {
+      "background": "Find nearby libraries open today using Korean public library open data.",
+      "approach": [
+        "저장소의 README를 확인해주세요."
+      ],
+      "results": {
+        "metrics": [
+          {
+            "value": "0",
+            "label": "Stars"
+          }
+        ],
+        "details": [
+          "최종 업데이트: 2026-06-26"
+        ]
+      },
+      "reflection": "진행 중인 개인 저장소입니다."
+    }
+  },
+  {
+    "slug": "personal-zero-won-poomgyeok",
+    "name": "zero-won-poomgyeok",
+    "oneLiner": "개인 저장소입니다.",
+    "period": {
+      "start": "2026.05",
+      "end": "2026.06"
+    },
+    "team": "개인 프로젝트",
+    "role": "Fullstack",
+    "contributions": [
+      "GitHub Repository: https://github.com/dayainow/zero-won-poomgyeok",
+      "Language: TypeScript"
+    ],
+    "stack": [
+      "TypeScript"
+    ],
+    "type": "personal",
+    "links": {
+      "github": "https://github.com/dayainow/zero-won-poomgyeok"
+    },
+    "detail": {
+      "background": "개인 저장소입니다.",
+      "approach": [
+        "저장소의 README를 확인해주세요."
+      ],
+      "results": {
+        "metrics": [
+          {
+            "value": "0",
+            "label": "Stars"
+          }
+        ],
+        "details": [
+          "최종 업데이트: 2026-06-26"
+        ]
+      },
+      "reflection": "진행 중인 개인 저장소입니다."
+    }
+  },
+  {
+    "slug": "personal-harness-hub",
+    "name": "harness-hub",
+    "oneLiner": "개인 저장소입니다.",
+    "period": {
+      "start": "2026.05",
+      "end": "2026.06"
+    },
+    "team": "개인 프로젝트",
+    "role": "Fullstack",
+    "contributions": [
+      "GitHub Repository: https://github.com/dayainow/harness-hub",
+      "Language: TypeScript"
+    ],
+    "stack": [
+      "TypeScript"
+    ],
+    "type": "personal",
+    "links": {
+      "github": "https://github.com/dayainow/harness-hub"
+    },
+    "detail": {
+      "background": "개인 저장소입니다.",
+      "approach": [
+        "저장소의 README를 확인해주세요."
+      ],
+      "results": {
+        "metrics": [
+          {
+            "value": "0",
+            "label": "Stars"
+          }
+        ],
+        "details": [
+          "최종 업데이트: 2026-06-26"
+        ]
+      },
+      "reflection": "진행 중인 개인 저장소입니다."
+    }
+  },
+  {
+    "slug": "personal-humanity-association",
+    "name": "humanity-association",
+    "oneLiner": "오늘의 인류애, 우리가 지킨다 — 익명 도파민 충전 웹 게시판 MVP",
+    "period": {
+      "start": "2026.06",
+      "end": "2026.06"
+    },
+    "team": "개인 프로젝트",
+    "role": "Fullstack",
+    "contributions": [
+      "GitHub Repository: https://github.com/dayainow/humanity-association",
+      "Language: TypeScript"
+    ],
+    "stack": [
+      "TypeScript"
+    ],
+    "type": "personal",
+    "links": {
+      "github": "https://github.com/dayainow/humanity-association"
+    },
+    "detail": {
+      "background": "오늘의 인류애, 우리가 지킨다 — 익명 도파민 충전 웹 게시판 MVP",
+      "approach": [
+        "저장소의 README를 확인해주세요."
+      ],
+      "results": {
+        "metrics": [
+          {
+            "value": "0",
+            "label": "Stars"
+          }
+        ],
+        "details": [
+          "최종 업데이트: 2026-06-12"
+        ]
+      },
+      "reflection": "진행 중인 개인 저장소입니다."
+    }
   }
 ];
