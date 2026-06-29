@@ -1,10 +1,19 @@
+"use client";
+
+import { useState } from "react";
 import { Section } from "@/components/ui/Section";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { projects } from "@/data/projects";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function ProjectsSection({ type }: { type: "work" | "personal" }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const INITIAL_COUNT = 6;
+  
   const filteredProjects = projects.filter((p) => p.type === type);
+  const hasMore = filteredProjects.length > INITIAL_COUNT;
+  const displayedProjects = isExpanded ? filteredProjects : filteredProjects.slice(0, INITIAL_COUNT);
   const id = type === "work" ? "work-projects" : "personal-projects";
   const label = type === "work" ? "Work Projects" : "Personal";
   const title = type === "work" ? "회사 프로젝트" : "개인 프로젝트";
@@ -12,8 +21,17 @@ export function ProjectsSection({ type }: { type: "work" | "personal" }) {
   return (
     <Section id={id} label={label} title={title}>
       <div className="flex flex-col gap-4">
-        {filteredProjects.map((project, i) => (
-          <SpotlightCard key={i} className="group">
+        <AnimatePresence initial={false}>
+        {displayedProjects.map((project, i) => (
+          <motion.div
+            key={project.slug}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+          <SpotlightCard className="group h-full">
             <div className="block p-6 relative z-10">
               <div className="flex justify-between items-baseline flex-wrap gap-2 mb-1.5">
                 <span className="text-[17px] font-semibold">{project.name}</span>
@@ -43,8 +61,21 @@ export function ProjectsSection({ type }: { type: "work" | "personal" }) {
               </div>
             </div>
           </SpotlightCard>
+          </motion.div>
         ))}
+        </AnimatePresence>
       </div>
+
+      {hasMore && (
+        <div className="mt-8 flex justify-center">
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-surface-subtle)] hover:bg-[var(--color-border)] border border-[var(--color-border)] rounded-full text-[14px] font-medium text-[var(--color-text-secondary)] transition-colors"
+          >
+            {isExpanded ? "접기 ↑" : `+ 이전 프로젝트 ${filteredProjects.length - INITIAL_COUNT}개 더보기`}
+          </button>
+        </div>
+      )}
     </Section>
   );
 }
